@@ -1,0 +1,4 @@
+客户端请求所用方法为：GET
+客户端请求所用的url为：/test?param1=1&param2=3
+客户端请求的对象为：{"host":"localhost:1337","connection":"keep-alive","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36","upgrade-insecure-requests":"1","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","accept-encoding":"gzip, deflate, br","accept-language":"zh-CN,zh;q=0.8,en;q=0.6,pl;q=0.4,zh-TW;q=0.2","cookie":"UM_distinctid=15e7a42c5d7197-0c8d3b9572b5a3-1a346c55-13c680-15e7a42c5d8600; CNZZDATA1257060683=1798430456-1505289704-%7C1505435216; connect.sid=s%3A_h8NOW1AWZAJTONCi0F_BEm0gPt2FvKR.TrHIzCwtc6LfQrwpI0XJChfCy3FQraoNM1rCq0kkmQU; io=60LtnZy9M2EZ6Cm6AAAB"}
+客户端请求所用HTTP版本为：1.1
