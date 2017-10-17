@@ -1,6 +1,6 @@
 ## node.js 中的进程对象具有的属性及属性值
 
-* execPath：属性值为用来运行应用程序的可执行文件的绝对路径
+* e
 
 * version：node版本号
 
@@ -41,3 +41,10 @@ headpUsed: V8内存消耗量
 nextTick 方法用于将一个函数推迟到代码中下一个同步方法执行完毕，或者异步方法的事件回调函数开始执行时调用
 `process.nextTick(callback)`
 在nextTick方法中，使用一个参数，参数值为被推迟的函数。
+
+* abort 方法
+abort 方法用于向运行的node 的进程发出SIGABRT信号，使进程异常中止，同时产生一个核心文件。
+
+* chdir 方法
+chdir 方法用于修改node 应用程序中使用的当前工作目录，使用方式如下所示。
+`process.chdir(directory)`
