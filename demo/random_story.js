@@ -43,7 +43,7 @@ function parseRSSFeed(rss) { // 4, 将预订源数据解析到一个条目数组
     var parser = new htmlparser.Parser(handler);
 
     parser.parseComplete(rss);
-    console.log(handler)
+    console.log(handler) // 遍历节点
     if(!handler.dom.items.length) {
         return next(new Error('No RSS items found'));
     }
