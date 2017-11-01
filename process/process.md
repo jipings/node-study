@@ -48,3 +48,6 @@ abort 方法用于向运行的node 的进程发出SIGABRT信号，使进程异�
 * chdir 方法
 chdir 方法用于修改node 应用程序中使用的当前工作目录，使用方式如下所示。
 `process.chdir(directory)`
+
+
+## cmd ??

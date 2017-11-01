@@ -35,6 +35,7 @@
     "babel-runtime": "^6.26.0",
     "htmlparser": "^1.7.7",
     "ip": "^1.1.5",
+    "nimble": "0.0.2",
     "react-transform-hmr": "^1.0.4",
     "request": "^2.83.0",
     "transform-runtime": "^0.0.0",

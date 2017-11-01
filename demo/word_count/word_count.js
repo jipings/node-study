@@ -26,6 +26,7 @@ function countWordsInText(text) {
 }
 
 fs.readdir(filesDir, function(err, files) {
+    console.log(files)
     if(err) throw err;
     
     for(var index in files) {
