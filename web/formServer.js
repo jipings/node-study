@@ -2,6 +2,7 @@
 var http = require('http');
 var qs = require('querystring');
 var formidable = require('formidable');
+var fs = require('fs');
 var items = [];
 
 var server = http.createServer((req, res) => {
@@ -85,9 +86,15 @@ function upload(req, res) {
     // form.on('filed', function(field, value) {
     //    console.log(field, value);
     // });
-
+    form.encoding = 'utf-8';
+    form.uploadDir="./upload"; // 设置上传目录
+    form.keepExtensions = true;
+    form.hash = true;
+    
     // form.on('file', function(name, file) {
     //      console.log(name, file);
+
+    //      // readStream.pipe(writeStream);
     // });
 
     // form.on('end', function() {
@@ -95,13 +102,15 @@ function upload(req, res) {
     // });
 
     form.parse(req, function(err, fields, files) {
-        console.log(err);
-        console.log(fields, files);
+        // console.log(err);
+        console.log(files.file.path );
+        
+        fs.rename(files.file.path, `./upload/xxx${Math.round(Math.random() * 10)}.pdf`);
         res.end('upload complete!');
     });
     form.on('progress', function(bytesReceived, bytesExpected) {
         var percent = Math.floor(bytesReceived/bytesExpected *100);
-        console.log(percent);
+        // console.log(percent);
     });
 }
 
