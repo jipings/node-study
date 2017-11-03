@@ -5,3 +5,5 @@
 # IntelliJ project files
 
 node_modules
+
+web/upload/*

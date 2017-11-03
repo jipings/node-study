@@ -3,8 +3,9 @@ var http = require('http');
 var qs = require('querystring');
 var formidable = require('formidable');
 var fs = require('fs');
+var socketio = require('socket.io');
 var items = [];
-
+var percent = 0;
 var server = http.createServer((req, res) => {
     console.log(req.url, req.method);
     if('/' == req.url) {
@@ -44,6 +45,7 @@ function show(res) {
             <p><input type="submit" value="Upload" /></p>
         </form>
         </body>
+        <script src="./socket.io/socket.io.js"></script>
     </html>`;
 
     res.setHeader('Content-Type', 'text/html');
@@ -109,8 +111,10 @@ function upload(req, res) {
         res.end('upload complete!');
     });
     form.on('progress', function(bytesReceived, bytesExpected) {
-        var percent = Math.floor(bytesReceived/bytesExpected *100);
+         // 增加上传进度
+         percent = Math.floor(bytesReceived/bytesExpected *100);
         // console.log(percent);
+        
     });
 }
 
@@ -118,3 +122,8 @@ function isFormData(req) {
     var type = req.headers['content-type'] || '';
     return 0 == type.indexOf('multipart/form-data');
 }
+
+var io = socketio.listen(server);
+io.sockets.on('connection', function(socket) {
+    socket.emit('progress', {progress: percent});
+})

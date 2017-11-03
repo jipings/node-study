@@ -39,6 +39,7 @@
     "nimble": "0.0.2",
     "react-transform-hmr": "^1.0.4",
     "request": "^2.83.0",
+    "socket.io": "^2.0.4",
     "transform-runtime": "^0.0.0",
     "yarn": "^1.0.2"
   }
