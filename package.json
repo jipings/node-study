@@ -36,6 +36,8 @@
     "formidable": "^1.1.1",
     "htmlparser": "^1.7.7",
     "ip": "^1.1.5",
+    "mongodb": "^2.2.33",
+    "mysql": "^2.15.0",
     "nimble": "0.0.2",
     "react-transform-hmr": "^1.0.4",
     "request": "^2.83.0",
