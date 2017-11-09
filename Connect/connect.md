@@ -30,3 +30,21 @@
     // don't forget to delete all req.files when done
     });
 ```
+
+## limit() 请求主体的限制
+
+body-parser 模块 limit 默认限制在100kb
+
+```js
+    var connect = require('connect');
+    var bodyParser = require('body-parser');
+
+    var app = connect()
+                .use(bodyParser.json({limit: '200kb'}))
+                .use(function(req, res) {
+                    console.log(req.body);
+                    res.end('ok end!');
+                });
+
+    app.listen(3000);
+```
