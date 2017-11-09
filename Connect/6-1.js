@@ -4,7 +4,7 @@ var app = connect();
 
 app.listen(3000);
 
-app.use(logger)
+app.use(setup(':method :url'))
     .use('/admin', restrict)
     .use('/admin', admin)
     .use(hello);
@@ -47,5 +47,18 @@ function admin(req, res, next) {
             res.setHeader('Content-Type', 'application/json');
             res.end(JSON.stringify(['tobi', 'loki', 'jane']));
             break;
+    }
+}
+
+function setup(format) {
+    var regexp = /:(\w+)/g;
+
+    return function(req, res, next) {
+        var str = format.replace(regexp, function(match, property) {
+            return req[property];
+        });
+        console.log(str);
+
+        next();
     }
 }
