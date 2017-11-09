@@ -48,3 +48,11 @@ body-parser 模块 limit 默认限制在100kb
 
     app.listen(3000);
 ```
+
+
+## query() 查询字符串解析
+
+node 最新版本已经可以处理查询字符串的解析了
+
+`querystring.parse`
+
