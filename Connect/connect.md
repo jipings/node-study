@@ -56,3 +56,8 @@ node 最新版本已经可以处理查询字符串的解析了
 
 `querystring.parse`
 
+
+
+## methodOverride() 仿造 HTTP 方法
+
+`npm install method-override`
