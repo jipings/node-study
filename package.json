@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha ./spec/mocha",
     "start": "babel-node ./demo/events.js"
   },
   "repository": {
@@ -43,6 +43,7 @@
     "htmlparser": "^1.7.7",
     "ip": "^1.1.5",
     "method-override": "^2.3.10",
+    "mocha": "^4.0.1",
     "mongodb": "^2.2.33",
     "mongoose": "^4.13.0",
     "morgan": "^1.9.0",
