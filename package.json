@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "jest ./spec/jest",
+    "test": "jest ./spec/jest --notify",
     "start": "babel-node ./demo/events.js"
   },
   "repository": {
