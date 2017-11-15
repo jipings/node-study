@@ -85,3 +85,41 @@ test('the promise reject is peanut butter', () => {
 
 
 // Async/Await 
+
+// 或者，您可以在测试中使用 async 和 await。 若要编写 async 测试，只要在函数前面使用 async 关键字传递到 test。 例如，可以用来测试相同的 fetchData 方案︰
+
+test('the data is async peanut butter', async () => {
+    expect.assertions(1);
+    const data = await Promise.resolve('peanut butter');
+    expect(data).toBe('peanut butter')
+});
+
+test('the fetch fails with an error', async () => {
+    expect.assertions(1);
+    try {
+        await Promise.reject('error');
+    } catch(e) {
+        expect(e).toMatch('error');
+    }
+});
+
+// 当然，你可以结合 async 和 await .resolves 或 .rejects （在 Jest 20.0.0+ 中可用）。
+
+test('the data is await resolves', async () => {
+    expect.assertions(1);
+    await expect(Promise.resolve('peanut butter')).resolves.toBe('peanut butter');
+});
+
+test('the data is await reject', async () => {
+    expect.assertions(2);
+    await expect(Promise.reject('error')).rejects.toMatch('error');
+    await expect(Promise.resolve('peanut butter')).resolves.toBe('peanut butter');    
+});
+
+
+
+
+
+
+
+// 在这些情况下，async 和 await 仅仅只是语法糖，其本身的逻辑与上述使用 Promise 的示例等效。
