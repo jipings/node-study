@@ -61,3 +61,7 @@ node 最新版本已经可以处理查询字符串的解析了
 ## methodOverride() 仿造 HTTP 方法
 
 `npm install method-override`
+
+
+## 虚拟机
+
