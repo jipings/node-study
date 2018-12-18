@@ -12,12 +12,6 @@ server.on('connection', () => {
     // todo
 })
 ```
-
-
-
-
-
-
 * server.close(); 关闭服务器
 ```js
 server.on('close', function() {
@@ -31,3 +25,7 @@ server.on('error', function(e) {
     }
 })
 ```
+
+* http Keep-Alive 属性
+Http协议采用 请求-应答 模式，不开启KeepAlive模式时，每个 req/res 客户端和服务端都要新建一个连接，完成之后立即断开连接（HTTP协议为无连接的协议）；当开启 Keep-Alive 模式（又称持久连接，连接重用）时，Keep-Alive功能使客户端到服务器的连接持续有效，当出现对服务器的后继请求时，Keep-Alive 功能避免了建立或者重新建立连接。
+
