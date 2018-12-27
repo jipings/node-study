@@ -86,7 +86,7 @@ function handler(req, res) {
             const todo = JSON.parse(Buffer.concat(buffer).toString());
 
             // 数据校验
-            if(!todo.title) return errorHandler(422, new Error('task title requi'));
+            if(!todo.title) return errorHandler(422, new Error('task title required'));
 
             db.create(todo, (err, data) => {
                 if(err) return errorHandler(500, err);
@@ -101,6 +101,48 @@ function handler(req, res) {
         return;
     }
 
+    // PUT 请求， 修改任务 `/api/todo/123`
+    if(method === 'PUT' && pathname.startsWith('/api/todo/')) {
+        // 从 URL 中用正则式匹配出 ID
+        const match = pathname.match(/^\/api\/todo\/(\d+)$/);
+        const id = match && match[1];
+
+        const buffer = [];
+        req.on('data', chunk => {
+            buffer.push(chunk);
+        });
+        req.on('end', () => {
+            // 解析 Body， {id, title, completed}
+            const body = JSON.parse(Buffer.concat(buffer).toString());
+            // 数据校验
+            if(!body.title) return errorHandler(422, new Error('task title required'));
+
+            db.update(id, body, err => {
+                if(err) return errorHandler(500, err); // 错误处理
+                // 发送响应， 无需返回
+                res.statusCode = 204;
+                res.setHeader('Content-Type', 'application/json');
+                return res.end;
+            });
+        });
+        return;
+    }
+
+    // DELETE 请求， 删除任务, `/api/todo/123`
+    if(method === 'DELETE' && pathname.startsWith('/api/todo/')) {
+        const match = pathname.match(/^\/api\/todo\/(\d+)$/);
+        const id = match && match[1];
+
+        db.destroy(id, err => {
+            if(err) return errorHandler(500, err); 
+
+            // 发送响应，无需返回对象
+            res.statusCode = 204;
+            res.setHeader('Content-Type', 'application/json');
+            return res.end();
+        });
+        return;
+    }
 
  // 兜底处理未匹配的 URL
  errorHandler(404, new Error('Not Found'))
@@ -109,7 +151,7 @@ function handler(req, res) {
 
 // 直接执行的时候，启动服务
 if(require.main === module) {
-    console.log(require.main, 'require');
+    console.log(module, 'require');
     const server = http.createServer(handler);
     server.listen(3000, () => {
         console.log('Server running at http://127.0.0.1:3000')

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "debug": "nodemon --inspect .",
+    "debug": "nodemon --inspect index.js",
     "test": "egg-bin test",
     "cov": "egg-bin cov"
   },
