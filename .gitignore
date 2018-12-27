@@ -7,5 +7,5 @@
 node_modules
 
 web/upload/*
-
+package-lock.json
 photo.*
