@@ -1,0 +1,26 @@
+{
+  "name": "05_koa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "debug": "nodemon --inspect .",
+    "test": "egg-bin test",
+    "cov": "egg-bin cov"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.6.1",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "koa-static-cache": "^5.1.2"
+  },
+  "devDependencies": {
+    "egg-bin": "^4.9.0",
+    "nodemon": "^1.18.6",
+    "supertest": "^3.3.0"
+  }
+}
