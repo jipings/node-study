@@ -1,0 +1,20 @@
+{
+  "name": "01_http",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "debug": "nodemon --inspect index.js",
+    "test": "egg-bin test",
+    "cov": "egg-bin cov"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "egg-bin": "^4.9.0",
+    "nodemon": "^1.18.9",
+    "supertest": "^3.3.0"
+  }
+}
