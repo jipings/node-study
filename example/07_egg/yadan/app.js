@@ -1,0 +1,11 @@
+
+const apth = require('path');
+
+module.exports = app => {
+    // 加载中间件，注意key名为文件名的驼峰格式
+    app.config.coreMiddleware.push('accessLog');
+
+    // 读取所有的 `app/model` 目录，挂载到 `ctx.model.todo.list()`
+    const directory = app.loader.getLoadUnits().map(unit => path.join(unit.path, 'app/model'));
+    app.loader.loadToContext(directory, 'model');
+}

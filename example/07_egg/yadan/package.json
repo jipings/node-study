@@ -1,0 +1,17 @@
+{
+  "name": "yadan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "egg": "^2.14.2",
+    "egg-validate": "^2.0.2",
+    "egg-view-nunjucks": "^2.2.0"
+  }
+}
