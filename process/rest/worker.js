@@ -18,6 +18,7 @@ process.on('message', function(m, tcp) {
 })
 
 process.on('uncaughtException', function(err) {
+    // TODO 需要记录err 日志
     process.send({act: 'suicide'});
     // 停止接收新的连接
     worker.close(function() {
