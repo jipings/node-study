@@ -1,6 +1,6 @@
 var http = require('http');
 let a = 0, b = 0;
-for(let i=0; i<1000;i++) {
+for(let i=0; i<10;i++) {
 var req = http.request({
     host: 'localhost',
     method: 'GET',
