@@ -23,3 +23,13 @@ HTTPS 是基于 TLS/SSL 的 HTTP 协议。在 Node.js 中，它被实现为一�
 
 为了解决中间人攻击问题， TLS/SSL 引入了数字证书认证，数字证书包含了服务器的名称和主机名、服务器的公钥、签名颁发机构的签名。在连接建立前，会通过证书中的签名确认收到的公钥是来自目标服务器的，从而产生信任关系。
 
+* 自签名
+
+
+* 生成csr文件
+
+    openssl req -new -nodes -sha256 -newkey rsa:2048 -keyout myprivate.key -out mydomain.csr
+
+* 得到CSR文件后，向我们自己的CA机构申请签名吧。签名过程需要CA的证书和私钥参与， 最终颁发一个带有CA签名的证书，如下所示:
+
+    openssl x509 -req -CA ca.crt -CAkey ca.key -CAcreateserial -in server.csr -out server.crt
