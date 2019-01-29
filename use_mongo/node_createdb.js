@@ -1,12 +1,21 @@
 // 创建数据库
+
+const connectConfig = {
+    user: 'admin',
+    pwd: 'admin',
+    host: 'localhost',
+    port: '27017',
+    dbName: 'webapp'
+};
+
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 
 // Connection URL
-const url = 'mongodb://localhost:27017';
+const url = `mongodb://${connectConfig.user}:${connectConfig.pwd}@${connectConfig.host}:${connectConfig.port}/${connectConfig.dbName}`;
 
 // Database Name
-const dbName = 'myproject';
+const dbName = 'webapp';
 
 // Create a new MongoClient
 const client = new MongoClient(url);
@@ -25,8 +34,11 @@ client.connect((err) => {
     //     });
     //   });
     
-    indexCollection(db, () => {
-        client.close();
+    // indexCollection(db, () => {
+    //     client.close();
+    // })
+    findAllDocuments(db, () => {
+
     })
 });
 // 创建集合，插入文档
