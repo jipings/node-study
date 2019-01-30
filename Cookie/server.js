@@ -12,17 +12,8 @@ const parseCookie = (cookie) => {
 
     return cookies;
 }
-const handle = (req, res) => {
-    res.setHeader('Set-Cookie', serialize('isVisit', '1'));
-    res.writeHead(200,{'Content-Type': 'text/plain'});
-    if(!req.cookies.isVisit) {
-        res.end('first entry')
-    } else {
-        res.end('not first entry')
-    }
-}
 const serialize = (name, val, opt) => {
-    const pairs = [name +'='+encode(val)];
+    const pairs = [name +'='+encodeURI(val)];
     opt = opt || {};
     if(opt.maxAge) pairs.push('Max-Age='+opt.maxAge);
     if(opt.domain) pairs.push('Domain='+ opt.domain);
@@ -32,6 +23,16 @@ const serialize = (name, val, opt) => {
     if (opt.secure) pairs.push('Secure');
     return pairs.join('; ');
 }
+const handle = (req, res) => {
+    res.setHeader('Set-Cookie', serialize('isName', '1', {HttpOnly: 1}));
+    res.writeHead(200,{'Content-Type': 'text/plain'});
+    if(!req.cookies.isVisit) {
+        res.end('first entry')
+    } else {
+        res.end('not first entry')
+    }
+}
+
 const http = require('http');
 http.createServer((req, res) => {
     
